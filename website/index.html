@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H2C - Digital Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-color: #0d121c; /* A deep dark blue for the base */
+        }
+
+        .background-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 10% 20%, rgba(13, 22, 36, 0.8) 0%, rgba(13, 22, 36, 0) 70%),
+                        radial-gradient(circle at 90% 80%, rgba(13, 22, 36, 0.8) 0%, rgba(13, 22, 36, 0) 70%),
+                        linear-gradient(to bottom right, #004d66, #001a22);
+            opacity: 0.8;
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.1; /* Reduced opacity for a more subtle look */
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        /* Glassmorphism effect for all cards */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Styling for the sticky header to make it semi-transparent and blurry */
+        .sticky-header {
+            /* The header's background color is a semi-transparent version of the body's background color */
+            background-color: rgba(13, 18, 28, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .link-style {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .link-style:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #06b6d4;
+            transition: width 0.3s ease-out, left 0.3s ease-out;
+        }
+
+        .link-style:hover:before {
+            width: 100%;
+            left: 0;
+        }
+
+        /* SVG icon styles */
+        .tech-icon {
+            height: 40px;
+            width: auto;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Background Layer with Gradient Glow -->
+    <div class="background-glow"></div>
+
+    <!-- Sticky Header -->
+    <header class="fixed top-0 left-0 w-full z-50 sticky-header px-4 py-4">
+        <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between">
+            <a href="#hero">
+                <!-- Placeholder for local H2C logo -->
+                <img src="./H2C Logo Transparent.png" alt="H2C Logo" class="h-12 w-auto mb-4 sm:mb-0">
+            </a>
+            <nav class="flex flex-wrap justify-center items-center space-x-6">
+                <a href="#why-us" class="hover:text-cyan-400 transition-colors duration-300 link-style">Why Us</a>
+                <a href="#clientele" class="hover:text-cyan-400 transition-colors duration-300 link-style">Clientele</a>
+                <a href="#services" class="hover:text-cyan-400 transition-colors duration-300 link-style">Services</a>
+                <a href="#industries" class="hover:text-cyan-400 transition-colors duration-300 link-style">Industries</a>
+                <a href="#process" class="hover:text-cyan-400 transition-colors duration-300 link-style">Process</a>
+                <a href="#contact-and-presence" class="hover:text-cyan-400 transition-colors duration-300 link-style">Connect with Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section with Video Background and Logo -->
+        <section id="hero" class="h-screen w-full flex flex-col items-center justify-center text-center space-y-8 overflow-hidden rounded-xl">
+            <div class="flex flex-col items-center relative z-10">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-cyan-400 mb-4 tracking-tight">Digital Solutions<br>That Drive Business Success</h1>
+                <p class="text-gray-400 leading-relaxed text-lg sm:text-xl">
+                    Empowering Brands Through Technology, Creativity & Strategy
+                </p>
+            </div>
+            <a href="#contact-and-presence" class="relative z-10 mt-8 inline-block px-8 py-3 bg-cyan-600 text-white font-semibold rounded-full shadow-lg hover:bg-cyan-700 transition-colors duration-300">
+                Go to Contact Form
+            </a>
+            <video autoplay loop muted class="hero-video">
+                <!-- Replace this source with your video file path or another hosted video -->
+                <source src="0_Abstract_Background_1280x720.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <div class="container mx-auto">
+            <!-- Our Happy Clients Section with Glass Boxes and Names -->
+            <section id="clientele" class="py-16 overflow-hidden px-4">
+                <h2 class="text-3xl font-bold text-center mb-6 text-cyan-400">Our Happy Clients</h2>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto">We've worked with more than 50 clients globally, delivering digital success across verticals.</p>
+                <div class="flex flex-nowrap items-center space-x-12 w-[200%] animate-scroll">
+                    <!-- Client name glass boxes -->
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">E-GAD</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">SHIELD</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">shipping.in</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">mykare</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">KINDERTECH</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">finzavio</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">GuppyAI</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">BRAINSOLD</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">SKINIYA</span>
+                    </div>
+                    
+                    <!-- Duplicate client names for seamless animation loop -->
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">E-GAD</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">SHIELD</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">shipping.in</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">mykare</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">KINDERTECH</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">finzavio</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">GuppyAI</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">BRAINSOLD</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex-shrink-0 flex items-center justify-center text-center w-48 h-24 transform transition-transform duration-300 hover:scale-105">
+                        <span class="text-lg font-semibold text-gray-100">SKINIYA</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Us / What Sets Us Apart Section (Content without cards) -->
+            <section id="why-us" class="py-16 md:py-24 px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-cyan-400">Why Us</h2>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto">We are more than just a service provider. We are your dedicated growth partner. At Happiness2Clients, we combine deep technical expertise, creative problem-solving, and a genuine passion for client success to build digital solutions that leave a lasting impact.</p>
+                <h3 class="text-2xl font-semibold text-center text-gray-100 mb-8">What Sets Us Apart</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                    <div class="p-4 rounded-xl text-center transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h4 class="text-xl font-semibold text-gray-100 mb-2">Vision Driven Approach</h4>
+                        <p class="text-gray-400 text-sm">We combine design with business goals to ensure every project has impact, not just beauty.</p>
+                    </div>
+                    <div class="p-4 rounded-xl text-center transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h4 class="text-xl font-semibold text-gray-100 mb-2">End-to-End Delivery</h4>
+                        <p class="text-gray-400 text-sm">From ideation to post-launch support, we offer comprehensive solutions under one roof.</p>
+                    </div>
+                    <div class="p-4 rounded-xl text-center transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h4 class="text-xl font-semibold text-gray-100 mb-2">Innovation Meets Functionality</h4>
+                        <p class="text-gray-400 text-sm">Our solutions are not only beautiful but built to perform and scale.</p>
+                    </div>
+                    <div class="p-4 rounded-xl text-center transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h4 class="text-xl font-semibold text-gray-100 mb-2">Client-Centric Culture</h4>
+                        <p class="text-gray-400 text-sm">We communicate openly, collaborate deeply, and act with your best interests in mind.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What We Do / Services Section -->
+            <section id="services" class="py-16 md:py-24 px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-cyan-400">What We Do</h2>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto">Our services empower businesses to go digital and scale efficiently.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Web Development</h3>
+                        <ul class="text-gray-400 text-sm space-y-1 list-disc list-inside">
+                            <li>Business websites (HTML, Webflow, WordPress)</li>
+                            <li>Web applications (Laravel, MERN)</li>
+                            <li>SEO-optimized, secure, and mobile-first designs</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">E-commerce Solutions</h3>
+                        <ul class="text-gray-400 text-sm space-y-1 list-disc list-inside">
+                            <li>Shopify store design, setup, and support</li>
+                            <li>WooCommerce for WordPress</li>
+                            <li>Marketplace integrations and cart enhancements</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Mobile App Development</h3>
+                        <ul class="text-gray-400 text-sm space-y-1 list-disc list-inside">
+                            <li>Cross-platform mobile apps (Flutter, React Native)</li>
+                            <li>Backend APIs, admin panels, and analytics</li>
+                            <li>App testing, deployment, and updates</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Digital Marketing</h3>
+                        <ul class="text-gray-400 text-sm space-y-1 list-disc list-inside">
+                            <li>Google & Meta ad campaigns</li>
+                            <li>SEO strategy & implementation</li>
+                            <li>Email marketing, automation, and lead nurturing</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Creative & Branding</h3>
+                        <ul class="text-gray-400 text-sm space-y-1 list-disc list-inside">
+                            <li>Logo & brand kit creation</li>
+                            <li>UI/UX for web and mobile</li>
+                            <li>Social media creatives, infographics, and brochures</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Industries We Serve Section -->
+            <section id="industries" class="py-16 md:py-24 px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-cyan-400">Industries We Serve</h2>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto">We bring domain expertise and adaptable strategies to a variety of industries.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">E-commerce & Retail</h3>
+                        <p class="text-gray-400 text-sm">Product listings, cart optimization, UI/UX enhancements</p>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Healthcare & Wellness</h3>
+                        <p class="text-gray-400 text-sm">Clinic websites, teleconsultation platforms, health apps</p>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Education & EdTech</h3>
+                        <p class="text-gray-400 text-sm">LMS platforms, course marketplaces, virtual classrooms</p>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Real Estate</h3>
+                        <p class="text-gray-400 text-sm">Property listings, lead forms, interactive brochures</p>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Hospitality</h3>
+                        <p class="text-gray-400 text-sm">Hotel booking engines, restaurant menus, digital promotions</p>
+                    </div>
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Startups</h3>
+                        <p class="text-gray-400 text-sm">MVP development, go-to-market strategies, pitch tech support</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technologies & Platforms Section -->
+            <section id="technologies" class="py-16 md:py-24 px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-cyan-400">Technologies & Platforms</h2>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto">We keep up with trends and best practices to ensure that our solutions are scalable, secure, and user-friendly.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- E-commerce -->
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card flex flex-col items-center text-center">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">E-Commerce</h3>
+                        <div class="flex flex-wrap justify-center space-x-4">
+                            <svg class="tech-icon" title="WooCommerce Logo" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M250 0C111.9 0 0 111.9 0 250s111.9 250 250 250 250-111.9 250-250S388.1 0 250 0zM170.8 387.5c-44.5 0-81.2-36.7-81.2-81.2s36.7-81.2 81.2-81.2c26.7 0 50.8 13.1 65.3 33.3l57.7-57.7c-29.3-37.5-74.8-60.8-125.7-60.8-100 0-181.2 81.2-181.2 181.2s81.2 181.2 181.2 181.2c84.2 0 155.6-57.6 175.7-135.8H346.5c-15.6 57-68 97.4-129.5 97.4z"/>
+                            </svg>
+                            <svg class="tech-icon" title="Shopify Logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M20 0a20 20 0 100 40 20 20 0 000-40zm-3 29c-1.1 0-2-.9-2-2v-4a2 2 0 012-2h6a2 2 0 012 2v4c0 1.1-.9 2-2 2zm1-8c0-1.1-.9-2-2-2h-2a2 2 0 00-2 2v2h-4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V13a2 2 0 00-2-2h-4a2 2 0 00-2 2v2c0 1.1-.9 2-2 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Web Development -->
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card flex flex-col items-center text-center">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Web Development</h3>
+                        <div class="flex flex-wrap justify-center space-x-4">
+                            <svg class="tech-icon" title="HTML Logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4.6 34.6L2.3 9.4h35.4l-2.3 25.2-15.7 4.4z" fill="#E44D26"/>
+                              <path d="M20 37.1l13.5-3.8 2.1-23.4H20V37.1z" fill="#F16529"/>
+                              <path d="M20 18.2h5.5l.4-4.8H20v-4.2h10.9l-.9 9.8H20v4.2zM20 29.5h-.1l-4.7-1.3-.3-3.1h-4.3l.6 5.3 8.7 2.4H20v-.1z" fill="#EBEBEB"/>
+                              <path d="M20 18.2h4.9l-.4-4.8H20zM20 29.5l8.7-2.4.6-5.3h-4.3l.3 3.1 4.7 1.3h-.1z" fill="#FFF"/>
+                            </svg>
+                            <svg class="tech-icon" title="CSS Logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4.6 34.6L2.3 9.4h35.4l-2.3 25.2-15.7 4.4z" fill="#2965F1"/>
+                              <path d="M20 37.1l13.5-3.8 2.1-23.4H20V37.1z" fill="#33A9DC"/>
+                              <path d="M20 14h-5.5l-.4-4h11.9l-.5-5H8.6l.8 8h10.6zM20 21.6h-4.4l-.4-4h-4.2l.6 5.3 8.4 2.4V21.6zM20 29.5h-.1l-4.7-1.3-.3-3.1h-4.3l.6 5.3 8.7 2.4H20v-.1z" fill="#EBEBEB"/>
+                              <path d="M20 14h4.9l.4-4h-5.3zM20 21.6h3.9l.4-4h-4.3zM20 29.5l4.3 1.2.6-5.3h-4.9z" fill="#FFF"/>
+                            </svg>
+                            <svg class="tech-icon" title="JS Logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4.6 34.6L2.3 9.4h35.4l-2.3 25.2-15.7 4.4z" fill="#F7DF1E"/>
+                              <path d="M20 37.1l13.5-3.8 2.1-23.4H20z" fill="#F7DF1E"/>
+                              <path d="M19.9 14.1H15v10.3h4.9c4.5 0 7.4-2.1 7.4-6.3S24.4 14.1 19.9 14.1zm-.1 3.5c1.9 0 3.3.9 3.3 2.7S21.7 23 19.9 23H18.5v-5.4zM20 27.6h5.8c4.9 0 7.7 2.1 7.7 6.4s-3.5 6.3-8.2 6.3h-5.3zM20 31.1v5.6h4.5c2.4 0 4.1-.9 4.1-2.8s-1.8-2.8-4.2-2.8z" fill="#000"/>
+                              <path d="M20 14.1h4.9v10.3h-4.9z" fill="#000"/>
+                              <path d="M20 27.6h5.8v10.4h-5.8z" fill="#000"/>
+                            </svg>
+                            <svg class="tech-icon" title="Laravel Logo" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M380.2 125.4c-4.4-4.5-11.7-4.5-16.1 0L247.9 241.6l-116.2-116.2c-4.5-4.5-11.7-4.5-16.1 0L42.2 245.8c-4.5 4.5-4.5 11.7 0 16.1l193.3 193.3c4.5 4.5 11.7 4.5 16.1 0L457.8 259.9c4.5-4.5 4.5-11.7 0-16.1l-77.6-78.4z" fill="#FF2D20"/>
+                            </svg>
+                            <svg class="tech-icon" title="PHP Logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M200 0C89.5 0 0 89.5 0 200s89.5 200 200 200 200-89.5 200-200S310.5 0 200 0z" fill="#787CB5"/>
+                              <path d="M165 50h-40v100h40V50zm10-50c-27.6 0-50 22.4-50 50v100c0 27.6 22.4 50 50 50h40V50h-40zM125 150h-40V50h40v100z" fill="#000"/>
+                              <path d="M275 150c-27.6 0-50-22.4-50-50V50c0-27.6 22.4-50 50-50h40v100h-40z" fill="#000"/>
+                            </svg>
+                            <svg class="tech-icon" title="WordPress Logo" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M200 0c-110.5 0-200 89.5-200 200s89.5 200 200 200 200-89.5 200-200S310.5 0 200 0z" fill="#464646"/>
+                              <path d="M200 40.5c-87.9 0-159.2 71.3-159.2 159.2s71.3 159.2 159.2 159.2 159.2-71.3 159.2-159.2S287.9 40.5 200 40.5z" fill="#0073AA"/>
+                              <path d="M160.8 141.2c-5.8-15.1-23.7-20.2-38.8-14.4-15.1 5.8-20.2 23.7-14.4 38.8 5.8 15.1 23.7 20.2 38.8 14.4 15.1-5.8 20.2-23.7 14.4-38.8zm39.2 136.6c-4.4 0-8.8-.4-13.1-1.3l-28-76.3 33-14.2 28.1 76.2c-4.4.9-8.7 1.3-13.1 1.3zM250 252c-4.4 0-8.8-.4-13.1-1.3l-28-76.3 33-14.2 28.1 76.2c-4.4.9-8.7 1.3-13.1 1.3z" fill="#FFF"/>
+                            </svg>
+                            <svg class="tech-icon" title="Webflow Logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-4.5 15l4.5-4.5V7.5L7.5 12zM12 16.5l4.5-4.5V7.5L12 12zM12 7.5L7.5 3h9z" fill="#4353FF"/>
+                              <path d="M12 7.5l-4.5 4.5 4.5 4.5V7.5z" fill="#FFF"/>
+                            </svg>
+                            <svg class="tech-icon" title="React Logo" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM5.31 10.38l-.66-.99L8 6l3.35 5.37-.66.99L8 8zM8 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM4.6 6.5l.7-1.1-.7-1.1L8 1l3.4 4.3-.7 1.1L8 4zM2.8 9.5l.7-1.1.7 1.1L8 13l3.4-4.3.7 1.1L8 14.5z" fill="#61DAFB"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Mobile Development -->
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card flex flex-col items-center text-center">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Mobile Development</h3>
+                        <div class="flex flex-wrap justify-center space-x-4">
+                            <svg class="tech-icon" title="Flutter Logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M20 0l-20 20 20 20 20-20zM8.3 28.3l-5.6-5.6L20 8.3 31.7 20z" fill="#42A5F5"/>
+                              <path d="M20 18.3l11.7-11.7-5.6-5.6L20 7.1z" fill="#29B6F6"/>
+                              <path d="M20 18.3L8.3 30l5.6 5.6L20 24.9z" fill="#01579B"/>
+                              <path d="M20 2.4l-11.7 11.7 5.6 5.6L20 8.3z" fill="#00B0FF"/>
+                            </svg>
+                            <svg class="tech-icon" title="React Native Logo" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 0a8 8 0 100 16A8 8 0 008 0z" fill="#FFF"/>
+                              <path d="M8 1a7 7 0 100 14A7 7 0 008 1z" fill="#61DAFB"/>
+                              <path d="M5.31 10.38l-.66-.99L8 6l3.35 5.37-.66.99L8 8zM8 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM4.6 6.5l.7-1.1-.7-1.1L8 1l3.4 4.3-.7 1.1L8 4zM2.8 9.5l.7-1.1.7 1.1L8 13l3.4-4.3.7 1.1L8 14.5z" fill="#000"/>
+                              <rect x="7" y="0" width="2" height="16" fill="#000"/>
+                              <rect x="0" y="7" width="16" height="2" fill="#000"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Marketing & Automation -->
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card flex flex-col items-center text-center">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Marketing & Automation</h3>
+                        <div class="flex flex-wrap justify-center space-x-4">
+                            <svg class="tech-icon" title="Meta Ads Logo" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 1.5a6.5 6.5 0 110 13 6.5 6.5 0 010-13zm-2.5 4h5l.5-1.5h-5zM8 8a2 2 0 100 4 2 2 0 000-4zm-1.5 1.5a.5.5 0 111 0v.5h-1zm1.5-1.5a.5.5 0 110-1h-1.5a.5.5 0 010 1h1.5z" fill="#4267B2"/>
+                            </svg>
+                            <svg class="tech-icon" title="Zoho CRM Logo" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M250 0C111.9 0 0 111.9 0 250s111.9 250 250 250 250-111.9 250-250S388.1 0 250 0zm0 100c-82.8 0-150 67.2-150 150s67.2 150 150 150 150-67.2 150-150-67.2-150-150-150zm-50 100h100v100h-100z" fill="#F45A3C"/>
+                              <path d="M200 200h100v100h-100z" fill="#FFF"/>
+                            </svg>
+                            <svg class="tech-icon" title="Google Tag Manager Logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v-2H4V6h16v4h2zm-9 6l-3-3h2V9h2v4h2l-3 3zm6 0v4h-4v2h4v4h2v-4h4v-2h-4v-4h-2z" fill="#4285F4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Design -->
+                    <div class="p-6 rounded-xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300 glass-card flex flex-col items-center text-center">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-2">Design</h3>
+                        <div class="flex flex-wrap justify-center space-x-4">
+                            <svg class="tech-icon" title="Figma Logo" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4 8A4 4 0 018 4h4v4h-4a4 4 0 01-4 4z" fill="#F24E1E"/>
+                              <path d="M12 4h-4v4h4a4 4 0 000-8z" fill="#A259FF"/>
+                              <path d="M8 8H4v4a4 4 0 004 4v-4z" fill="#1ABC9C"/>
+                              <path d="M12 8a4 4 0 00-4-4V8h4z" fill="#F24E1E"/>
+                            </svg>
+                            <svg class="tech-icon" title="Canva Logo" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M250 0C111.9 0 0 111.9 0 250s111.9 250 250 250 250-111.9 250-250S388.1 0 250 0zm0 100c-82.8 0-150 67.2-150 150s67.2 150 150 150 150-67.2 150-150-67.2-150-150-150z" fill="#00C4CC"/>
+                              <path d="M210 200c-11 0-20 9-20 20v60c0 11 9 20 20 20h80c11 0 20-9 20-20v-60c0-11-9-20-20-20h-80zm0 20h80v60h-80z" fill="#FFF"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-gray-400 mt-8 max-w-2xl mx-auto">We bring a holistic approach, combining tech, design, and marketing to deliver maximum impact.</p>
+            </section>
+
+            <!-- Combined Contact & Our Presence Section -->
+            <section id="contact-and-presence" class="py-16 md:py-24 px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-cyan-400">Get In Touch</h2>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto">Have a project in mind? Let's connect and build something great together.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Left side: Contact Form in a card -->
+                    <div class="p-8 rounded-xl shadow-xl glass-card">
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-6">Contact Us</h3>
+                        <!--
+                            To enable form submissions, you need to replace 'your-email@example.com'
+                            with your actual email address. This form uses Formspree, a free service
+                            that forwards form submissions to your email without a backend.
+                            For more info, visit: https://formspree.io/
+                        -->
+                        <form action="https://formspree.io/f/xzzaknqr" method="POST" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-300 mb-2">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:border-cyan-400 transition-colors duration-300" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email" name="_replyto" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:border-cyan-400 transition-colors duration-300" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-300 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:border-cyan-400 transition-colors duration-300" required></textarea>
+                            </div>
+                            <input type="hidden" name="_next" value="./thanks.html">
+                            <div class="text-center">
+                                <button type="submit" class="px-8 py-3 bg-cyan-600 text-white font-semibold rounded-full shadow-lg hover:bg-cyan-700 transition-colors duration-300">
+                                    Send Message
+                                </button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <!-- Right side: Global Presence and Contact Info -->
+                    <div class="p-8 rounded-xl flex flex-col items-center justify-center text-center">
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-6">Our Global Presence</h3>
+                        <p class="text-gray-400 mb-4">
+                            Happiness2Clients is a dynamic IT consulting and digital solutions firm, headquartered in Kerala, India. Our reach is truly global, helping businesses from startups to enterprises transition into the digital era with cutting-edge solutions.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-gray-400 text-sm mb-6">
+                            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>India</span></span>
+                            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>Middle East</span></span>
+                            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>UAE</span></span>
+                            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>Qatar</span></span>
+                            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>UK</span></span>
+                            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>USA</span></span>
+                            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-cyan-400"></span><span>Canada</span></span>
+                        </div>
+                        <img src="world-map-with-global-technology-social-connection-network-with-nodes-links-vector-illustration.png" alt="Global map showing H2C's international presence" class="w-full h-auto rounded-lg">
+                        <div class="mt-6 space-y-2 text-gray-400">
+                            <p class="text-lg">**Contact Details**</p>
+                            <p>
+                                **Email:** info@h2c.co.in
+                            </p>
+                            <p>
+                                **Phone:** +91-XXXXXXXXXX
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center text-gray-400 text-sm">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 H2C. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
